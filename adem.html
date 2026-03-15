@@ -1,279 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adem Abe — Digital Marketer & Frontend Creator</title>
-  <meta name="description" content="Adem Abe professional multi-discipline portfolio with digital marketing, frontend work, and certificate showcase." />
-  <style>
-    :root {
-      --bg: #0a0f24;
-      --card: rgba(14, 20, 44, 0.88);
-      --fg: #eef4ff;
-      --accent: #57b3ff;
-      --accent2: #7ab8ff;
-      --shadow: 0 22px 40px rgba(0, 0, 0, 0.33);
-      --radius: 20px;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adem Abe — Portfolio</title>
+    <meta name="description" content="Adem Abe — frontend developer and digital marketer. View projects on GitHub and contact for work." />
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="topbar" aria-hidden="true"></div>
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { min-height: 100%; }
-    body {
-      font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
-      color: var(--fg);
-      background: radial-gradient(circle at top, #203464 0%, #0a0f24 45%, #04070f 100%);
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
-
-    .container { width: min(1180px, 95vw); margin: 0 auto; }
-
-    nav {
-      position: sticky; top: 0; z-index: 30;
-      backdrop-filter: blur(12px);
-      background: rgba(4, 8, 20, 0.75);
-      border-bottom: 1px solid rgba(138, 179, 255, 0.25);
-      box-shadow: 0 4px 22px rgba(0, 0, 0, 0.35);
-    }
-
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.74rem 1rem; }
-    .logo { font-weight: 800; font-size: 1.1rem; letter-spacing: 0.02em; color: #b5d4ff; }
-    .menu { display: flex; gap: 0.75rem; }
-    .menu a { color: #dce7ff; text-decoration: none; font-size: 0.93rem; padding: 0.42rem 0.63rem; border-radius: 10px; transition: background .2s ease; }
-    .menu a:hover { background: rgba(93, 148, 255, 0.16); }
-
-    .hero { min-height: 90vh; display: grid; place-items: center; text-align: center; padding: 4rem 0; }
-    .hero-content { max-width: 760px; backdrop-filter: blur(16px); background: linear-gradient(165deg, rgba(9,15,36,0.7), rgba(27,40,76,0.72)); border: 1px solid rgba(103, 151, 255, 0.25); border-radius: var(--radius); padding: 2.2rem; box-shadow: var(--shadow); }
-    .hero h1 { font-size: clamp(2.2rem, 5vw, 3rem); margin-bottom: 0.8rem; color: #eff4ff; }
-    .hero p { color: #d5e2ff; font-size: 1.05rem; margin-bottom: 1.3rem; }
-    .hero .actions { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
-    .btn { display: inline-flex; align-items: center; gap: .45rem; background: linear-gradient(120deg, #5ba2ff, #7cc6ff); color: #031f3f; font-weight: 700; border-radius: 999px; padding: 0.65rem 1.1rem; text-decoration: none; border: 1px solid rgba(255,255,255,.18); box-shadow: 0 10px 24px rgba(38, 71, 145, 0.3); transition: transform .2s ease, filter .2s ease; }
-    .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
-
-    .hero-photo { width: 130px; height: 130px; margin: 0 auto 1rem; border-radius: 50%; border: 3px solid rgba(102, 165, 255, 0.88); overflow: hidden; box-shadow: 0 10px 22px rgba(31, 70, 120, 0.45); }
-    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-    .project-item a::after { content: '↗'; margin-left: 0.36rem; }
-
-    section:target { outline: 3px solid rgba(87, 158, 255, 0.35); outline-offset: 3px; }
-    nav a:focus-visible { outline: 2px solid rgba(130, 190, 255, 0.75); outline-offset: 3px; }
-
-    .grid-2 { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
-    section.card { border-radius: var(--radius); border: 1px solid rgba(132, 173, 255, 0.22); background: var(--card); padding: 1.3rem; backdrop-filter: blur(12px); box-shadow: var(--shadow); position: relative; overflow: hidden; opacity: 0; transform: translateY(22px); animation: fadeInUp 0.6s ease forwards; }
-    section.card:nth-of-type(1) { animation-delay: 0.1s; }
-    section.card:nth-of-type(2) { animation-delay: 0.16s; }
-    section.card:nth-of-type(3) { animation-delay: 0.22s; }
-    section.card:nth-of-type(4) { animation-delay: 0.28s; }
-    section.card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 95% 20%, rgba(74, 133, 255, 0.2), transparent 32%); pointer-events: none; }
-    section.card > * { position: relative; z-index: 1; }
-    @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(22px);} 100% { opacity: 1; transform: translateY(0);} }
-    .btn { animation: pulseGlow 2.8s ease-in-out infinite; }
-    @keyframes pulseGlow { 0%,100% { box-shadow: 0 8px 18px rgba(56, 114, 255, 0.25);} 50% { box-shadow: 0 14px 26px rgba(72, 160, 255, 0.38); transform: scale(1.01);} }
-    .hero::after { content: ''; position: absolute; inset: 0; z-index: 0; background-image: radial-gradient(circle at 20% 10%, rgba(104, 153, 255, 0.16), transparent 30%), radial-gradient(circle at 81% 70%, rgba(81, 205, 255, 0.13), transparent 36%); }
-
-    /* Top decorative animated bar (not real progress, just a cool accent) */
-    .topbar { position: sticky; top: 0; height: 6px; width: 100%; z-index: 60; background: linear-gradient(90deg, rgba(95,142,255,0.9), rgba(143,210,255,0.7)); background-size: 200% 100%; animation: slideBg 6s linear infinite; box-shadow: 0 4px 18px rgba(12,18,40,0.28); }
-    @keyframes slideBg { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
-
-    /* Project card tilt and depth */
-    .project-item { perspective: 900px; }
-    .project-item .card-inner { transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s; transform-origin: center; }
-    .project-item:hover .card-inner { transform: translateY(-8px) rotateX(6deg) rotateY(-4deg) scale(1.01); box-shadow: 0 20px 40px rgba(3,10,28,0.5); }
-
-    /* Preview modal using :target */
-    .preview-btn { display: inline-block; margin-left: .6rem; padding: .36rem .6rem; border-radius: 8px; background: rgba(120,180,255,0.12); color: var(--fg); text-decoration: none; border: 1px solid rgba(130,180,255,0.18); font-weight:700; }
-    .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 2rem; z-index: 120; }
-    .modal .card { width: min(920px, 96%); max-height: 90vh; overflow: auto; }
-    .modal:target { display: flex; background: rgba(3,8,20,0.6); }
-    .modal img { width: 100%; height: auto; border-radius: 12px; display:block; }
-
-    h2 { font-size: 1.42rem; margin-bottom: .85rem; color: #ebf1ff; }
-    p { color: #c6d5f5; margin-bottom: .9rem; }
-
-    .tagline { display: inline-flex; gap: 0.4rem; align-items: center; background: rgba(113,160,255,0.19); color: #cce7ff; border: 1px solid rgba(130, 178, 255, 0.25); border-radius: 999px; font-weight: 600; padding: 0.3rem 0.7rem; margin-bottom: 0.6rem; }
-
-    .stats { display: grid; grid-template-columns: repeat(2,minmax(110px,1fr)); gap: .7rem; margin-top: 1rem; }
-    .stat-card { border-radius: 14px; border: 1px solid rgba(118, 175, 255, 0.3); background: rgba(18, 32, 71, 0.72); color: #d9e8ff; padding: .78rem; text-align: center; }
-    .stat-card h3 { font-size: 1.2rem; color: #f5fbff; margin-bottom: .18rem; }
-    .stat-card span { font-size: 0.88rem; color: #afc7f4; }
-
-    .project-list { display: grid; gap: 1rem; }
-    .project-item { border-radius: 14px; border: 1px solid rgba(138, 183, 255, 0.3); background: linear-gradient(130deg, rgba(18,29,62,0.9), rgba(24,39,82,0.82)); padding: .95rem; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-    .project-item:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35); border-color: rgba(123, 183, 255, 0.6); }
-    .project-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: .45rem; }
-    .project-title h3 { font-size: 1.05rem; color: #effaff; }
-    .project-item p { font-size: .9rem; color: #cfdef5; }
-    .project-item a { color: #80c8ff; font-weight: 600; text-decoration: none; font-size: .88rem; }
-    .project-item a::after { content: '↗'; margin-left: 0.3rem; font-size: 0.9rem; }
-    .project-img { width: 100%; max-height: 210px; object-fit: cover; border-radius: 12px; margin: 0.55rem 0; border: 1px solid rgba(146, 188, 255, 0.35); }
-
-    .certificate { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
-    .certificate-img { width: min(500px, 100%); border-radius: 17px; border: 1px solid rgba(143, 196, 255, 0.35); box-shadow: 0 14px 28px rgba(7, 16, 39, 0.4); }
-    .certificate-meta { flex: 1; }
-    .certificate-meta p { margin-bottom: .75rem; }
-
-    .contacts { display: grid; gap: 0.7rem; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-top: 0.7rem; }
-    .social-card { border-radius: 14px; border: 1px solid rgba(120, 169, 255, 0.3); background: rgba(16, 27, 55, 0.84); padding: .84rem; text-decoration: none; color: #d8e9ff; display: flex; flex-direction: row; align-items: center; gap: .55rem; transition: transform .2s ease, box-shadow .2s ease; }
-    .social-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(5, 16, 42, 0.42); border-color: rgba(142, 193, 255, 0.55); }
-    .social-icon { width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(96, 156, 255, 0.2); overflow: hidden; }
-    .social-icon img { width: 100%; height: 100%; object-fit: cover; }
-    .social-card strong { color: #f0f6ff; display: inline-flex; align-items: center; gap: 0.35rem; }
-    .social-card span { color: #9eb9df; font-size: .9rem; }
-    .social-card.github .social-icon { background: rgba(0,0,0,0.2); }
-    .social-card.instagram .social-icon { background: rgba(255,255,255,0.14); }
-    .social-card.telegram .social-icon { background: rgba(0,136,204,0.2); }
-
-    footer { margin: 2rem 0 1rem; text-align: center; font-size: .84rem; color: #94bae2; }
-
-    @media (min-width: 900px) {
-      .grid-2 { grid-template-columns: 1.1fr .9fr; }
-      .certificate { flex-wrap: nowrap; }
-      .hero { min-height: 75vh; }
-    }
-
-    @media (max-width: 700px) {
-      .nav-inner { flex-wrap: wrap; justify-content: center; }
-      .menu { width: 100%; justify-content: center; }
-      .stats { grid-template-columns: 1fr; }
-      .project-list { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-  <div class="topbar" aria-hidden="true"></div>
-  <nav>
-    <div class="container nav-inner">
-      <div class="logo">Adem Abe</div>
-      <div class="menu">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#work">Projects</a>
-        <a href="#certificate">Certificate</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <main class="container">
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <div class="hero-photo"><img src="resource/photo_2026-03-14_11-44-48.jpg" alt="Adem Abe profile" onerror="this.src='https://via.placeholder.com/130?text=Adem'" /></div>
-        <p class="tagline">Digital Marketing + Frontend Design</p>
-        <h1>Hi, I’m Adem — I build growth engines and branded experiences</h1>
-        <p>Digital marketer and front-end creator with hands-on work across growth campaigns, landing page conversions, social funnel automation, and performance-first UI systems.</p>
-        <div class="actions">
-          <a class="btn" href="#about">Explore About</a>
-          <a class="btn" href="#work">See Projects</a>
-          <a class="btn" href="#certificate">Show Certificate</a>
+    <nav>
+      <div class="nav-inner container">
+        <div class="logo">Adem • Frontend Developer</div>
+        <div class="menu">
+          <a href="adem.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="certificate.html">Certificate</a>
+          <a href="contact.html">Contact</a>
         </div>
       </div>
-    </section>
+    </nav>
 
-    <section id="about" class="card">
-      <h2>About Me</h2>
-      <p>I help startups and brands scale with user-centric web design and digital growth strategies. My core strengths are SEO-friendly page layouts, PPC landing pages, email marketing funnels, and immersive UI work that improves engagement.</p>
-      <div class="stats">
-        <div class="stat-card"><h3>1+ Years</h3><span>Digital Marketing Experience</span></div>
-        <div class="stat-card"><h3>4 Campaigns</h3><span>Ads, Social, and CRM Funnels</span></div>
-        <div class="stat-card"><h3>10 UI Pages</h3><span>Web and mobile-first interfaces</span></div>
-        <div class="stat-card"><h3>5% Conversion</h3><span>Average conversion boost in A/B tests</span></div>
-      </div>
-    </section>
-
-    <section id="work" class="card">
-      <h2>Projects from GitHub</h2>
-      <p>Selected website projects from GitHub showing UX-driven sites, landing pages, and frontend interfaces.</p>
-
-      <div class="project-list">
-        <article class="project-item">
-          <div class="card-inner">
-            <div class="project-title"><h3>OTM Website</h3><span>
-              <a href="https://github.com/astorepo/otm" target="_blank" rel="noreferrer">View on GitHub</a>
-              <a class="preview-btn" href="#preview-otm">Preview</a>
-            </span></div>
-            <img class="project-img" src="resource/photo_2026-03-14_13-27-36.jpg" alt="OTM project screenshot" onerror="this.src='https://via.placeholder.com/750x380?text=OTM+Project'" />
-            <p>A complete website project built with responsive layout and clear conversion paths for target customers. Includes hero sections, service details, and contact strategy features.</p>
-          </div>
-        </article>
-
-        <article class="project-item">
-          <div class="card-inner">
-            <div class="project-title"><h3>Real Estate Website</h3><span>
-              <a href="https://github.com/Ademabe16/Realestate-website" target="_blank" rel="noreferrer">View on GitHub</a>
-              <a class="preview-btn" href="#preview-real">Preview</a>
-            </span></div>
-            <p>A property listing site with modern UI patterns, property cards, and call-to-action elements that supports marketing and lead generation objectives.</p>
-          </div>
-        </article>
-
-        <article class="project-item">
-          <div class="card-inner">
-            <div class="project-title"><h3>Website Branding Demo</h3><span>
-              <a href="https://github.com/Ademabe16" target="_blank" rel="noreferrer">View More</a>
-              <a class="preview-btn" href="#preview-demo">Preview</a>
-            </span></div>
-            <p>A polished website concept demonstrating advanced CSS effects, typography grading, and brand-first aesthetic with a functional flow.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Preview modals (CSS :target) -->
-    <div id="preview-otm" class="modal" aria-hidden="true">
-      <div class="card">
-        <a class="preview-btn" href="#" style="position:absolute;right:12px;top:12px;">Close</a>
-        <img src="resource/photo_2026-03-14_13-27-36.jpg" alt="OTM large preview" />
-        <div style="padding:1rem;">
-          <h3>OTM Website — Preview</h3>
-          <p>Large preview of the OTM website. This modal acts as a quick case snapshot — update this content with more screenshots or notes as needed.</p>
-          <p><a class="btn" href="https://github.com/astorepo/otm" target="_blank" rel="noreferrer">Open Repo</a></p>
+    <main class="container">
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-photo"><img src="resource/photo_2026-03-15_10-18-38.jpg" alt="Adem portrait"></div>
+          <h1>Adem Abe — Frontend Developer & Digital Marketer</h1>
+          <p>Building fast, accessible frontends and conversion-focused marketing pages. I specialize in responsive UI, clean code, and measurable results.</p>
+          <!-- hero actions removed per request -->
         </div>
-      </div>
-    </div>
+      </section>
 
-    <div id="preview-real" class="modal" aria-hidden="true">
-      <div class="card">
-        <a class="preview-btn" href="#" style="position:absolute;right:12px;top:12px;">Close</a>
-        <img src="resource/photo_2026-03-14_13-27-36.jpg" alt="Real estate preview" />
-        <div style="padding:1rem;"><h3>Real Estate Website — Preview</h3>
-        <p>Preview of the real estate site — add more images or notes here for recruiters.</p></div>
-      </div>
-    </div>
-
-    <div id="preview-demo" class="modal" aria-hidden="true">
-      <div class="card">
-        <a class="preview-btn" href="#" style="position:absolute;right:12px;top:12px;">Close</a>
-        <img src="resource/photo_2026-03-14_13-27-36.jpg" alt="Branding demo preview" />
-        <div style="padding:1rem;"><h3>Branding Demo — Preview</h3>
-        <p>Visual demo of branding and layout experiments. Use this area to call out design choices and results.</p></div>
-      </div>
-    </div>
-
-    <section id="certificate" class="card">
-      <h2>Certification & Achievements</h2>
-      <p>Verified certification in digital marketing ;& analytics (visual proof below). I also keep this file updated with latest training and project credentials in the resource folder.</p>
-      <div class="certificate">
-        <img src="resource/aba20e1bf8ff4870885bd4aece379e58 (1).png" alt="Digital marketing certificate" class="certificate-img" onerror="this.src='https://via.placeholder.com/900x620?text=Certificate+Image'" />
-        <div class="certificate-meta">
-          <h3>Digital Marketing Certificate</h3>
-          <p>Focus areas: Market research, campaign optimization, analytics, content strategy, UX funnels, and conversion rate optimization.</p>
-          <p><a class="btn" href="https://github.com/Ademabe16" target="_blank" rel="noreferrer">View Open Source Work</a></p>
+      <section class="card" id="summary">
+        <h2>Summary</h2>
+        <p>I am a frontend developer with 1+ years experience, focused on HTML, CSS, and modern JavaScript practices. I design and build interfaces that are both beautiful and performant, with an eye for marketing and UX.</p>
+        <div class="grid-2" style="margin-top:1rem; gap:1.2rem;">
+          <div>
+            <h3>Career Goal</h3>
+            <p>Lead frontend development on product teams for startups and SMEs, improving conversion and retention through better UX and reliable implementation.</p>
+          </div>
+          <aside>
+            <h3>Quick Facts</h3>
+            <ul>
+              <li><strong>Location:</strong> Ethiopia</li>
+              <li><strong>Experience:</strong> 1+ years</li>
+              <li><strong>Primary focus:</strong> Frontend development & marketing pages</li>
+            </ul>
+          </aside>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="contact" class="card">
-      <h2>Contact & Social</h2>
-      <p>Ready to partner on your next growth project, marketing sprint, or product design challenge.</p>
-      <div class="contacts">
-        <a class="social-card github" href="https://github.com/Ademabe16" target="_blank" rel="noreferrer"><span class="social-icon"><img src="resource/photo_2026-03-14_13-50-51.jpg" alt="GitHub logo" onerror="this.src='https://via.placeholder.com/26?text=GH'" /></span><strong>GitHub</strong><span>@Ademabe16</span></a>
-        <a class="social-card instagram" href="https://www.instagram.com/black_adam1995?igsh=c2plMHowcXY0ZGVj" target="_blank" rel="noreferrer"><span class="social-icon"><img src="resource/photo_2026-03-14_13-50-59.jpg" alt="Instagram logo" onerror="this.src='https://via.placeholder.com/26?text=IG'" /></span><strong>Instagram</strong><span>@black_adam1995</span></a>
-        <a class="social-card telegram" href="https://t.me/Dreamer80a" target="_blank" rel="noreferrer"><span class="social-icon"><img src="resource/photo_2026-03-14_13-51-02.jpg" alt="Telegram logo" onerror="this.src='https://via.placeholder.com/26?text=TG'" /></span><strong>Telegram</strong><span>@Dreamer80a</span></a>
-      </div>
-    </section>
+      <section class="card" id="skills">
+        <h2>Skills</h2>
+        <p>Core technologies and tools I use day-to-day.</p>
+        <div class="stats" style="margin-top:1rem;">
+          <div class="stat-card"><h3>Frontend</h3><span>HTML, CSS, JavaScript, React basics</span></div>
+          <div class="stat-card"><h3>Design</h3><span> accessibility-first UI</span></div>
+        </div>
+        <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap;">
+          <span class="tagline">HTML</span>
+          <span class="tagline">CSS</span>
+          <span class="tagline">JavaScript</span>
+          <span class="tagline">Responsive Design</span>
+          <span class="tagline">Performance</span>
+        </div>
+      </section>
 
-    <footer>© 2026 Adem Abe - Full-Stack digital marketing + frontend brand presence. Crafted with HTML & CSS.</footer>
-  </main>
-</body>
+      <section class="card" id="services">
+        <h2>Services</h2>
+        <p>I offer:</p>
+        <ul>
+          <li>Landing page design & implementation</li>
+          <li>Responsive website builds</li>
+          <li>Funnel and CTA optimization (copy + layout)</li>
+          <li>Front-end bug fixes and maintenance</li>
+        </ul>
+      </section>
+
+      <section class="projects-overview card" id="projects">
+        <h2>Projects overview</h2>
+        <p>Highlights — full code is available on my GitHub profile.</p>
+        <div class="projects-grid">
+          <a class="proj-tile" href="https://github.com/astorepo/otm" target="_blank" rel="noreferrer">
+            <div class="thumb" style="background-image:url('resource/photo_2026-03-14_13-27-36.jpg')" aria-hidden="true"></div>
+            <h4>Oromia Tourism Management (OTM)</h4>
+            <p>Tourism platform for Oromia — booking flows, listings, and local guides interface.</p>
+            <div class="meta"><span class="tag">Frontend</span><span style="color:#9eb9df">GitHub</span></div>
+          </a>
+
+          <a class="proj-tile" href="https://github.com/Ademabe16/Realestate-website" target="_blank" rel="noreferrer">
+            <div class="thumb" style="background-image:url('https://via.placeholder.com/900x560?text=Realestate+Preview')" aria-hidden="true"></div>
+            <h4>Realestate — Listing Website</h4>
+            <p>Property listing UI and lead-capture flows. See repository for implementation details.</p>
+            <div class="meta"><span class="tag">Frontend</span><span style="color:#9eb9df">GitHub</span></div>
+          </a>
+        </div>
+      </section>
+
+      <section class="card" id="certificate-feature">
+        <h2>Featured Certificate</h2>
+        <p>Certificate of completion — Digital Marketing course.</p>
+        <div class="certificate" style="margin-top:1rem;">
+          <img class="certificate-img" src="resource/aba20e1bf8ff4870885bd4aece379e58 (1).png" alt="Certificate image" />
+          <div class="certificate-meta">
+            <h3>Certificate: Digital Marketing (Course Completion)</h3>
+            <p>Completed a Digital Marketing course covering market research, analytics, campaign optimization, funnel design and conversion-oriented UX.</p>
+            <p><a class="btn" href="certificate.html">View certificate page</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact-cta" class="card">
+        <h2>Let's work together</h2>
+        <p>Email me at <a href="mailto:adeabe205@gmail.com">adeabe205@gmail.com</a> or use the contact page for quick messages.</p>
+        <div style="margin-top:1rem;"><a class="btn" href="contact.html">Contact page</a></div>
+      </section>
+
+      <footer style="margin-top:2rem;">© 2026 Adem Abe — Frontend & digital marketing. Built with HTML & CSS.</footer>
+    </main>
+  </body>
 </html>
-
